@@ -20,15 +20,18 @@ namespace FractalMaker
     /// </summary>
     public partial class MainWindow : Window
     {
+        private MainViewModel viewModel = new MainViewModel { X0 = -2, X1 = 2, Y0 = -2, Y1 = 2 };
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = viewModel;
             this.Loaded += MainWindow_Loaded;
         }
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
-                AnimationBuilder.MakeAnimatedGif();
+            AnimationBuilder.MakeAnimatedGif();
+            viewModel.Calculate();
         }
     }
 }

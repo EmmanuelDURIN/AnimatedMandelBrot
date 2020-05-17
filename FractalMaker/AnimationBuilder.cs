@@ -21,7 +21,7 @@ namespace FractalMaker
                     for (int phase = 0; phase < 10; phase += 10)
                     {
                         Bitmap image = new Bitmap(100, 100, System.Drawing.Imaging.PixelFormat.Format24bppRgb);
-                        image.Palette = new ColorPalette { Flags}
+                        //image.Palette = new ColorPalette { Flags}
                         using (var context = image.CreateUnsafeContext())
                         {
                             for (var x = 0; x < context.Width; x++)
