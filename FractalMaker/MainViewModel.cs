@@ -10,8 +10,8 @@ namespace FractalMaker
 {
     public class MainViewModel : ObservableObject, IDrawable
     {
-        const int Width = 100;
-        const int Height = 100;
+        const int Width = 1000;
+        const int Height = 1000;
         public MainViewModel()
         {
             sourceBitmap = new WriteableBitmap(

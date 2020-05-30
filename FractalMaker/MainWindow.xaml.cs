@@ -26,11 +26,12 @@ namespace FractalMaker
             InitializeComponent();
             DataContext = viewModel;
             this.Loaded += MainWindow_Loaded;
+
         }
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            AnimationBuilder.MakeAnimatedGif();
+            // AnimationBuilder.MakeAnimatedGif();
             viewModel.Calculate();
         }
     }

@@ -1,6 +1,7 @@
 ﻿using BumpKit;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
@@ -21,28 +22,46 @@ namespace FractalMaker
                 for (int j = 0; j < height; j++)
                 {
                     double x = x0 + (x1 - x0) * i / (width - 1);
-                    double y = 0.0;
+                    double y = y0 + (y1 - y0) * j / (height - 1);
                     // double y
                     int iteration = GetIterationFromPoint(x, y);
-                    iteration = i;
+                    //iteration = i;
                     // TODO : afficher dans écran
                     //        mettre dans fichier
-                    Drawable.DrawPixel(i, j, Color.FromRgb((byte)iteration, (byte)iteration, (byte)iteration));
+                    float value =  ((float)iteration)/255F;
+                    Drawable.DrawPixel(i, j, Color.FromScRgb( 1.0F, value, 0, value));
                 }
             }
         }
-        public int GetIterationFromPoint(double x, double y)
+        // public int GetIterationFromPoint(double x, double y)
+        // {
+
+        //     Complex c = new Complex(x, y);
+        //     Complex currentZ = new Complex(0, 0);
+
+        //     Complex nextZ = currentZ * currentZ + c;
+        //     currentZ = nextZ;
+
+
+        //     return 0;
+        // }
+
+        // retourne un nombre < 256
+        public int GetIterationFromPoint(double ca, double cb)
         {
+            double za = 0;
+            double zb = 0;
+            int i = 0;
+            while ( (za * za + zb * zb < 4 ) &&  i <255){
+               za = ( za * za)- (zb * zb )+ ca;
+               zb = (2 * za * zb ) + cb;
+            //   if (za * za + zb * zb >= 4 )
+            //       break; 
+               i++;
+            }
 
-            Complex c = new Complex(x, y);
-            Complex currentZ = new Complex(0, 0);
-
-            Complex nextZ = currentZ * currentZ + c;
-            currentZ = nextZ;
-
-
-            return 0;
+            //System.Diagnostics.Debug.WriteLine( $"{i}");
+            return i;
         }
-
     }
 }
