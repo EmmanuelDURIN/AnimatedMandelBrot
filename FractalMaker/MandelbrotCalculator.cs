@@ -29,7 +29,7 @@ namespace FractalMaker
                     // TODO : afficher dans écran
                     //        mettre dans fichier
                     float value =  ((float)iteration)/255F;
-                    Drawable.DrawPixel(i, j, Color.FromScRgb( 1.0F, value, 0, value));
+                    Drawable.DrawPixel(i, j, Color.FromScRgb( a : 1.0F, r: 0, g: value, b: 0 ));
                 }
             }
         }
@@ -51,12 +51,16 @@ namespace FractalMaker
         {
             double za = 0;
             double zb = 0;
+            double za1 = 0;
+            double zb1 = 0;
             int i = 0;
-            while ( (za * za + zb * zb < 4 ) &&  i <255){
-               za = ( za * za)- (zb * zb )+ ca;
-               zb = (2 * za * zb ) + cb;
-            //   if (za * za + zb * zb >= 4 )
-            //       break; 
+            while (   i <255){
+               za1 = ( za * za)- (zb * zb )+ ca;
+               zb1 = (2 * za * zb ) + cb;
+               za = za1;
+               zb = zb1;               
+              if (za * za + zb * zb >= 4 )
+                  break; 
                i++;
             }
 
