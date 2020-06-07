@@ -20,13 +20,31 @@ namespace FractalMaker
     /// </summary>
     public partial class MainWindow : Window
     {
-        private MainViewModel viewModel = new MainViewModel { X0 = -2, X1 = 2, Y0 = -2, Y1 = 2 };
+        private MainViewModel viewModel = new MainViewModel { FractalView = new FractalView { X0 = -2, X1 = 2, Y0 = -2, Y1 = 2 } };
         public MainWindow()
         {
             InitializeComponent();
             DataContext = viewModel;
             this.Loaded += MainWindow_Loaded;
+            // On s'abonne aux dépl. de la souris sur l'image :
+            fractalImage.MouseMove += FractalImage_MouseMove;
 
+            // On s'abonne aux click de la souris sur l'image :
+            fractalImage.MouseLeftButtonDown += FractalImage_MouseLeftButtonDown;
+
+        }
+
+        private void FractalImage_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            
+        }
+
+        private void FractalImage_MouseMove(object sender, MouseEventArgs e)
+        {
+            var pos = e.GetPosition(fractalImage);
+            viewModel.X = pos.X;
+            viewModel.Y = pos.Y;
+            // ANAIS : convertir {x,y} ecran en Coordonnées fractales avec une fonction
         }
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)

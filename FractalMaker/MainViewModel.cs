@@ -24,46 +24,55 @@ namespace FractalMaker
 
         }
 
-        private double x0;
+        private FractalView fractalView = new FractalView { };
 
-        public double X0
+        public FractalView FractalView
         {
-            get { return x0; }
+            get { return fractalView; }
             set
             {
-                Set(ref x0, value);
+                Set(ref fractalView, value);
             }
         }
-        private double x1;
+        // champ, donnée membre
+        private double x;
 
-        public double X1
+        // propriété
+        public double X
         {
-            get { return x1; }
+            get { return x; }
             set
             {
-                Set(ref x1, value);
+                // écrit dans x1 et émet un événement 
+                Set(ref x, value);
             }
         }
-        private double y0;
 
-        public double Y0
+        private double y;
+
+        public double Y
         {
-            get { return y0; }
+            get { return y; }
             set
             {
-                Set(ref y0, value);
+                Set(ref y, value);
             }
         }
-        private double y1;
 
-        public double Y1
+        private double zoom = 2;
+
+        public double Zoom
         {
-            get { return y1; }
+            get { return zoom; }
             set
             {
-                Set(ref y1, value);
+                Set(ref zoom, value);
             }
         }
+
+
+
+       
         private WriteableBitmap sourceBitmap;
 
         public WriteableBitmap SourceBitmap
@@ -110,7 +119,7 @@ namespace FractalMaker
         {
             var mandelbrotCalculator = new MandelbrotCalculator();
             mandelbrotCalculator.Drawable = this;
-            mandelbrotCalculator.CalculateImage(Width, Height, X0, X1, Y0, Y1);
+            mandelbrotCalculator.CalculateImage(Width, Height, fractalView.X0, fractalView.X1, fractalView.Y0, fractalView.Y1);
         }
     }
 }

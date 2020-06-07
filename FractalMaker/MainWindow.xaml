@@ -8,11 +8,24 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="27"/>
+            <RowDefinition Height="75"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
+        <Grid Background="Transparent">
+            <Label Content="X:" HorizontalAlignment="Left" Margin="72,10,0,0" VerticalAlignment="Top"/>
+            <TextBlock  HorizontalAlignment="Left" Margin="97,15,0,0" Text="{Binding X}" TextWrapping="Wrap" VerticalAlignment="Top"/>
+
+            <Label Content="Y:" HorizontalAlignment="Left" Margin="72,36,0,0" VerticalAlignment="Top"/>
+            <TextBlock  HorizontalAlignment="Left" Margin="97,41,0,0" Text="{Binding Y}" TextWrapping="Wrap" VerticalAlignment="Top"/>
+
+            <Label Content="Zoom" HorizontalAlignment="Left" Margin="488,0,0,0" VerticalAlignment="Center"/>
+            <TextBox HorizontalAlignment="Left" Margin="545,31,0,0" Text="{Binding Zoom}" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+
+
+
+        </Grid>
         <Viewbox Grid.Row="1" >
-            <Image Source="{Binding SourceBitmap}" />
+            <Image x:Name="fractalImage" Source="{Binding SourceBitmap}" />
         </Viewbox>
     </Grid>
 </Window>
