@@ -33,18 +33,6 @@ namespace FractalMaker
                 }
             }
         }
-        // public int GetIterationFromPoint(double x, double y)
-        // {
-
-        //     Complex c = new Complex(x, y);
-        //     Complex currentZ = new Complex(0, 0);
-
-        //     Complex nextZ = currentZ * currentZ + c;
-        //     currentZ = nextZ;
-
-
-        //     return 0;
-        // }
 
         // retourne un nombre < 256
         public int GetIterationFromPoint(double ca, double cb)
